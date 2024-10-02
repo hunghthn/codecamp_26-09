@@ -1,0 +1,14 @@
+<h1>Danh sách sách</h1>
+
+<input type="text" id="search" placeholder="Tìm kiếm sách..." />
+<div id="book-list">
+  <ul>
+    <% @books.each do |book| %>
+      <li>
+        <strong>
+          <%= link_to book.title, book_path(book) %>
+        </strong>: <%= book.content %>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,21 @@
+<h1><%= @book.title %></h1>
+<p><%= @book.content %></p>
+
+<%= form_with(model: [@book, Review.new], local: false) do |form| %>
+  <div>
+    <%= form.label :content, "Viết đánh giá:" %>
+    <%= form.text_area :content %>
+    <%= form.submit 'Gửi Đánh Giá' %>
+  </div>
+<% end %>
+
+<div id="reviews">
+  <% @reviews.each do |review| %>
+    <p><%= review.content %></p>
+  <% end %>
+  <% if @reviews.empty? %>
+    <p>Chưa có đánh giá nào cho sách này.</p>
+  <% end %>
+</div>
+
+<%= hidden_field_tag 'book-id', @book.id %>
